@@ -1,0 +1,15 @@
+#mapid {
+  height: 480px;
+  width: 840px;
+  margin-left: 15%;
+}
+
+.popupImage {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.leaflet-popup-content-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}

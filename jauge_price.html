@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<title>VIS DATA</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<script src="https://d3plus.org/js/d3plus-hierarchy.v0.9.full.min.js"></script>
+  <script src="http://d3plus.org/js/d3.min.js"></script>
+</head>
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/b1.jpg');">
+  <div id="pageintro" class="hoc clear"> 
+    <article>
+      <h3 class="heading">Used cars</h3>
+      <p>Membres de l'équipe:</p>
+       <ul style="list-style-type: none;">
+         <li>Maroua JELLAL</li>
+         <li>Widad CHOUEF</li>
+         <li>Olaya JAAOUANE</li>
+         <li>Aniss MAAMRI</li>
+       </ul>
+    </article>
+  </div>
+</div>
+
+<div class="wrapper row2">
+  <section class="hoc container clear"> 
+    <!-- ################################################################################################ -->
+    <article class="one_third first">
+      <h6 class="heading">A propos de projet</h6>
+      <p>Notre projet consiste à réaliser des visualisations pour le pilotage de
+         l'activité de vente de voitures d'occasions. Pour cela on a utilisé une 
+         base de données trouvée sur Kaggle contenant des informations sur différentes 
+         voitures d'occasion aux Etats-Unis. Nous avons pu réaliser via cette base de données 
+          différentes visualisations qui permettent de combiner,charger,visualiser et explorer cette base de données.</p>
+      <p>Chaque graphique, tableau ou objet est interactif et s'actualise automatiquement en fonction du contexte associé à chaque action.</p>
+      <p ><a class="btn" style="background-color: #f0a721;" target="_blank" href="https://www.kaggle.com/austinreese/craigslist-carstrucks-data">Base de données choisie <i class="fas fa-angle-right" ></i></a></p>
+    </article>
+    <figure class="one_third"><a class="imgover" href="#"><img src="images/demo/348x420.png" alt=""></a></figure>
+    <figure class="one_third"><a class="imgover" href="#"><img src="images/demo/348x420.png" alt=""></a></figure>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="sectiontitle">
+      <h6 class="heading">Visualisation des données</h6>
+      <p>Combinez, chargez, visualisez et explorez facilement vos données, quelle que soit leur taille.</p>
+	</div>
+	<div id="jauge" style="height: 500px;"></div>
+	
+    <div class="clear"></div>
+  </main>
+</div>
+
+<div class="wrapper row3" style="background-color: #f1f1f1;">
+  <section class="hoc container clear"> 
+    <div class="sectiontitle">
+      <h6 class="heading">Outils de visualisation utilisées</h6>
+    </div>
+    <ul class="nospace group btmspace-80 overview">
+      <li class="one_third">
+        <article>
+          <a href="#"><i><img  style= "height: 60px; width: 60px;" src="images/demo/backgrounds/d3plus.png"></a>
+          <h6 class="heading"><a href="#">D3PLUS</a></h6>
+          <p>A javascript library that extends the popular D3.js</p>
+        </article>
+      </li>
+      <li class="one_third">
+        <article>
+          <a href="#"><i><img  style= "height: 60px; width: 60px;" src="images/demo/backgrounds/d3.png"></a>
+          <h6 class="heading"><a href="#">D3</a></h6>
+          <p>A JavaScript library for visualizing data with HTML, SVG, and CSS.</p>
+        </article>
+      </li>
+      <li class="one_third">
+        <article>
+          <a href="#"><i><img  style= "height: 60px; width: 60px;" src="images/demo/backgrounds/voyant.png"></a>
+          <h6 class="heading"><a href="#">Voyant</a></h6>
+          <p>Is a web-based reading and analysis environment for digital texts.</p>
+        </article>
+      </li>
+      <li class="one_third">
+        <article>
+          <a href="#"><i><img  style= "height: 80px; width: 80px;" src="images/demo/backgrounds/raw.png"></a>
+          <h6 class="heading"><a href="#">Rawgraph</a></h6>
+          <p>Is an open source data visualization framework.</p>
+        </article>
+      </li>
+      <li class="one_third">
+        <article>
+          <a href="#"><i><img  style= "height: 80px; width: 80px;" src="images/demo/backgrounds/leaflet.png"></a>
+          <h6 class="heading"><a href="#">Rawgraph</a></h6>
+          <p>Is the leading open-source JavaScript library for mobile-friendly interactive maps.</p>
+        </article>
+      </li>
+
+    </ul>
+  </section>
+</div>
+
+<!-- JAVASCRIPTS -->
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+</body>
+<script>
+	d3.json("cars_data.json", function(mes_donnees) {
+	  new d3plus.Pie()
+	  .select("#jauge")
+		.config({
+			data: mes_donnees,
+			groupBy: "Manufacturer",
+			value: function(d) {
+			return d["Price"];
+			}
+		})
+		.render();
+	});
+  </script>
+</html>
